@@ -13,6 +13,7 @@ const cart = () => {
 
     cartBtn.addEventListener("click", openCart)
     cartCloseBtn.addEventListener("click", closeCart)
+
 }
 
 export default cart
