@@ -10,6 +10,20 @@ const cart = () => {
     const goodsWrapper = document.querySelector('.goods')
     const cartWrapper = document.querySelector('.cart-wrapper')
 
+    //ttt
+    const basketTotal = document.querySelector('.counter');
+
+    function insertClick() {
+        let counteClick = basketTotal.textContent;
+        basketTotal.textContent = +counteClick + 1;  // можно и parseInt(counteClick)
+    }
+
+    function deleteClick() {
+        let counteClick = basketTotal.textContent;
+        basketTotal.textContent = +counteClick - 1;
+    }
+    //ttt
+
     const openCart = () => {
         const cart = localStorage.getItem('cart') ?
             JSON.parse(localStorage.getItem('cart')) : []
@@ -32,6 +46,9 @@ const cart = () => {
 
     goodsWrapper.addEventListener("click", (event) => {
         if (event.target.classList.contains('btn-primary')) {
+            //ttt
+            insertClick()
+            //ttt
             const card = event.target.closest('.card')
             const key = card.dataset.key
             const goods = JSON.parse(localStorage.getItem('goods'))
@@ -50,6 +67,10 @@ const cart = () => {
 
     cartWrapper.addEventListener("click", (event) => {
         if (event.target.classList.contains('btn-primary')) {
+            //ttt
+            deleteClick()
+            //ttt
+
             const cart = localStorage.getItem('cart') ?
                 JSON.parse(localStorage.getItem('cart')) : []
             const card = event.target.closest('.card')
@@ -80,6 +101,10 @@ const cart = () => {
             renderCart([])
 
             cartTotal.textContent = 0
+
+            //ttt
+            basketTotal.textContent = 0
+            //ttt
         })
 
     })
